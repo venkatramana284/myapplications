@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: hello-openshift
+  namespace: hello
+  labels:
+    app: hello-openshift
+    app.kubernetes.io/component: hello-openshift
+    app.kubernetes.io/instance: hello-openshift
+spec:
+  host: hello-openshift-hello.apps.sno.myorg.com
+  to:
+    kind: Service
+    name: hello-openshift
+    weight: 100
+  tls:
+    termination: edge
+  wildcardPolicy: None
